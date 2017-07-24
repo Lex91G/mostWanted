@@ -10,7 +10,7 @@ function app(people){
   var searchType = promptFor("Do you know the name of the person you are looking for? Enter 'yes' or 'no'", yesNo).toLowerCase();
   switch(searchType){
     case 'yes':
-    // TODO: search by name
+    	searchByName(people);
     break;
     case 'no':
     // TODO: search by traits
@@ -21,7 +21,25 @@ function app(people){
   }
 }
 
-// Menu function to call once you find who you are looking for
+function searchByName(people){
+  var firstName = promptFor("What is the person's first name?", chars);
+  var lastName = promptFor("What is the person's last name?", chars);
+  var fullName = firstName + " " + lastName;
+ 
+ for(var i = 0; i < people.length; i++){ 
+ 	var newFullName = people[i].firstName + " " + people[i].lastName;
+
+ 	if(newFullName === fullName){
+		return mainMenu(people[i], people);
+ 	}
+ 	else{
+
+ 	}
+ }
+}
+ 
+
+ // Menu function to call once you find who you are looking for
 function mainMenu(person, people){
 
   /* Here we pass in the entire person object that we found in our search, as well as the entire original dataset of people. We need people in order to find descendants and other information that the user may want. */
@@ -35,7 +53,7 @@ function mainMenu(person, people){
 
   switch(displayOption){
     case "info":
-    // TODO: get person's info
+    getInfo();
     break;
     case "family":
     // TODO: get person's family
@@ -53,13 +71,19 @@ function mainMenu(person, people){
   }
 }
 
-function searchByName(people){
-  var firstName = promptFor("What is the person's first name?", chars);
-  var lastName = promptFor("What is the person's last name?", chars);
-
-  // TODO: find the person using the name they entered
-
+function getInfo(person){
+		alert("Gender: " + person.gerner + "Date Of Birth: " + person.dob + "Height: "
+	+ person.height + "Weight: " + person.weight + "Eye Color: " + person.eyeColor;)
+		
 }
+function getFamily(){
+		alert(
+			)
+}
+function 
+
+
+
 
 // alerts a list of people
 function displayPeople(people){
@@ -95,6 +119,6 @@ function chars(input){
   return true; // default validation only
 }
 
-myArray= [ alexInfo, kiongInfo];
-var mapResult = myArray.map(function(element)
-	)
+ 
+//mapResult = data.map(function(element)
+	
