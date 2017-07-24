@@ -1,6 +1,5 @@
 "use strict"
 
-
   /*
 Build all of your functions for displaying and gathering information below (GUI).
 */
@@ -53,9 +52,10 @@ function mainMenu(person, people){
 
   switch(displayOption){
     case "info":
-    getInfo();
+    getInfo(person);
     break;
     case "family":
+    getFamily(person, people);
     // TODO: get person's family
     break;
     case "descendants":
@@ -72,17 +72,23 @@ function mainMenu(person, people){
 }
 
 function getInfo(person){
-		alert("Gender: " + person.gerner + "Date Of Birth: " + person.dob + "Height: "
-	+ person.height + "Weight: " + person.weight + "Eye Color: " + person.eyeColor;)
+		alert("Gender: " + person.gender + "Date Of Birth: " + person.dob + "Height: "
+	+ person.height + "Weight: " + person.weight + "Eye Color: " + person.eyeColor);
 		
 }
-function getFamily(){
-		alert(
-			)
+function getFamily(person, people){
+		var getParents = person.id;
+		for(var i = 0; i > people.length;i++){
+			for(var j = 0; j > people[i].parents.length; j++){
+				if(people[i].parents[j]=== getParents){
+					alert("The parents are " + people[i].parents[j]);
+			}
+		}		
+	}
 }
-function 
+function getDescendants(){
 
-
+}
 
 
 // alerts a list of people
@@ -118,6 +124,65 @@ function yesNo(input){
 function chars(input){
   return true; // default validation only
 }
+
+function noName(){
+
+  if(!person){
+    alert("Could not find that individual.");
+    return app(people); // restart
+  }
+
+  var displayOption = prompt("Search by characteristics");
+
+  switch(displayOption){
+    case "Age":
+    getInfo();
+    break;
+    case "Height":
+    // TODO: get person's family
+    break;
+    case "Weight":
+    // TODO: get person's descendants
+    break;
+    case "Occuupation":
+    // restart
+    break;
+    case "Eye Color":
+
+    break;
+    case "Quit":
+    return; // stop execution
+    default:
+    return mainMenu(person, people); // ask again
+  }
+}
+
+
+function findAgeCriteria(people){
+	var tellAge = Prompt("What age are they?");	
+
+	var findAgeCriteriaNow = people.filter(function(person){
+		if(tellAge === person.age){
+			return true;
+		}
+		else {
+			return false;
+		}
+
+
+
+	});
+
+	for(var i = 0; i < findAgeCriteriaNow.length; i++){
+
+
+		alert(people[i].firstName + " " + people[i].lastName);
+	}
+
+		
+
+}
+
 
  
 //mapResult = data.map(function(element)
