@@ -68,22 +68,21 @@ function mainMenu(person, people){
 
   /* Here we pass in the entire person object that we found in our search, as well as the entire original dataset of people. We need people in order to find descendants and other information that the user may want. */
 
-  var displayOption = prompt("Found " + person.firstName + " " + person.lastName + " . Do you want to know their 'info', 'family', or 'descendants'? Type the option you want or 'restart' or 'quit'");
+  var displayOption = prompt("Information on " + person.firstName + " " + person.lastName  + 
+
+    "\n 1 = Information \n 2 = Family \n 3 = Descendants \n 4 = Restart");
 
   switch(displayOption){
-    case "info":
+    case "1":
     getInfo(person);
     break;
-    case "family":
-    getFamily(person, people);
+    case "2":
+    getAFamily(person, people);
     break;
-    case "descendants":
-    getDescendants(person);
+    case "3":
+    getDescendants(person, people);
     break;
-    case
-    // TODO: get person's descendants
-    break;
-    case "restart":
+    case "4":
     app(people); // restart
     break;
     case "quit":
@@ -93,10 +92,10 @@ function mainMenu(person, people){
   }
 }
 
-function getInfo(person){
-		alert("Gender: " + person.gender + "Date Of Birth: " + person.dob + "Height: "
-	+ person.height + "Weight: " + person.weight + "Eye Color: " + person.eyeColor);
-		
+function getInfo(person, people){
+		alert("Gender: " + person.gender + "\nDate Of Birth: " + person.dob + "\nHeight: "
+	+ person.height + "\nWeight: " + person.weight + "\nEye Color: " + person.eyeColor);
+		return mainMenu(person, people);
 }
 
 function getDescendants(person, people){
@@ -171,7 +170,8 @@ function noName(people){
     findEyeColorCriteria(people);
     break;
     case "6":
-    return; // stop execution
+    app(people);
+    return; 
     default:
     return (people); // ask again
   }
@@ -198,37 +198,34 @@ function findAgeCriteria(people){
 
 		alert(people[i].firstName + " " + people[i].lastName);
 	}	
-
+return app();
 }
 
 function findHeightCriteria(people){
-	var tellHeight = prompt("How tall are they?");	
+	var tellHeight = prompt("How tall are they (inches)?");	
 
 	var findHeightCriteriaNow = people.filter(function(person){
-		if(tellHeight === person.height){
+		if(tellHeight === person.height.toString()){
 			return true;
 		}
 		else {
 			return false;
 		}
-
-
-
-	});
+});
 
 	for(var i = 0; i < findHeightCriteriaNow.length; i++){
 
 
-		alert(people[i].firstName + " " + people[i].lastName);
+		alert(findHeightCriteriaNow[i].firstName + " " + findHeightCriteriaNow[i].lastName);
 	}	
-
+return app();
 }
 
 function findWeightCriteria(people){
 	var tellWeight = prompt("How much do they weight?");	
 
 	var findWeightCriteriaNow = people.filter(function(person){
-		if(tellWeight === person.Weight){
+		if(tellWeight === person.weight.toString()){
 			return true;
 		}
 		else {
@@ -239,12 +236,12 @@ function findWeightCriteria(people){
 
 	});
 
-	for(var i = 0; i < findHeightCriteriaNow.length; i++){
+	for(var i = 0; i < findWeightCriteriaNow.length; i++){
 
 
-		alert(people[i].firstName + " " + people[i].lastName);
+		alert(findWeightCriteriaNow[i].firstName + " " + findWeightCriteriaNow[i].lastName);
 	}	
-
+return app();
 }
 
 
@@ -252,7 +249,7 @@ function findOccupationCriteria(people){
 	var tellOccupation = prompt("What is their occupation?");	
 
 	var findOccupationCriteriaNow = people.filter(function(person){
-		if(tellOccupation === person.occupation){
+		if(tellOccupation === person.occupation.toString()){
 			return true;
 		}
 		else {
@@ -266,16 +263,16 @@ function findOccupationCriteria(people){
 	for(var i = 0; i < findOccupationCriteriaNow.length; i++){
 
 
-		alert(people[i].firstName + " " + people[i].lastName);
+		alert(findOccupationCriteriaNow[i].firstName + " " + findOccupationCriteriaNow[i].lastName);
 	}	
-
+return app();
 }
 
 function findEyeColorCriteria(people){
-	var tellEyeColor = prompt("How tall are they?");	
+	var tellEyeColor = prompt("What color are their eyes?");	
 
 	var findEyeColorCriteriaNow = people.filter(function(person){
-		if(tellEyeColor === person.eyeColor){
+		if(tellEyeColor === person.eyeColor.toString()){
 			return true;
 		}
 		else {
@@ -285,14 +282,49 @@ function findEyeColorCriteria(people){
 
 
 	});
+    if(findEyeColorCriteriaNow = 0){
+    alert("No Matches Founds \n Please Try Again")
+    findEyeColorCriteria();
+  }
 
 	for(var i = 0; i < findEyeColorCriteriaNow.length; i++){
 
 
-		alert(people[i].firstName + " " + people[i].lastName);
+		alert(findEyeColorCriteriaNow[i].firstName + " " + findEyeColorCriteriaNow[i].lastName);
 	}	
-
+  return app();
 }
+
+//abs
+//function doMathGettingAge();
+//var todaysDate -= pe
+//function getAFamily(person, people){
+//for(var i = 0; i < people.length; i++){
+
+  //var gettingFamilyFilter = data.filter(function(element){
+      //if(person.id === people[i].currentSpouse){
+
+      //return true;
+   // }
+
+      //else if(person.id === people[i].parents[0] || person.id === people[i].parents[1]){
+      //return true;
+
+   // }
+     // else if(person.parents[0] === people[i].parents[0] || person.parents[1] === people[i].parents[2]
+       //|| person.parents[2] === people[i].parents[1] || person.parents[2] === people[i].parents[2]){
+      //return true;
+    //}
+     // else if(person.parents === people.parents){
+      //return true;
+       //   }
+       // }
+     // }
+   // }
+      
+    
+  
+
 
 
  
