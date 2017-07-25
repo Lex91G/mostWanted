@@ -12,7 +12,7 @@ function app(people){
     	searchByName(people);
     break;
     case 'no':
-    // TODO: search by traits
+    	noName(people);
     break;
     default:
     app(people); // restart app
@@ -86,9 +86,7 @@ function getFamily(person, people){
 		}		
 	}
 }
-function getDescendants(){
 
-}
 
 
 // alerts a list of people
@@ -125,7 +123,7 @@ function chars(input){
   return true; // default validation only
 }
 
-function noName(){
+function noName(people){
 
   if(!person){
     alert("Could not find that individual.");
@@ -136,19 +134,19 @@ function noName(){
 
   switch(displayOption){
     case "Age":
-    getInfo();
+    findAgeCriteria(people);
     break;
     case "Height":
-    // TODO: get person's family
+    findHeightCriteria(people);
     break;
     case "Weight":
-    // TODO: get person's descendants
+    findWeightCriteria(people);
     break;
     case "Occuupation":
-    // restart
+    findOccupationCriteria(people);
     break;
     case "Eye Color":
-
+    findEyeColorCriteria(people);
     break;
     case "Quit":
     return; // stop execution
@@ -177,9 +175,100 @@ function findAgeCriteria(people){
 
 
 		alert(people[i].firstName + " " + people[i].lastName);
-	}
+	}	
 
-		
+}
+
+function findHeightCriteria(people){
+	var tellHeight = Prompt("How tall are they?");	
+
+	var findHeightCriteriaNow = people.filter(function(person){
+		if(tellHeight === person.height){
+			return true;
+		}
+		else {
+			return false;
+		}
+
+
+
+	});
+
+	for(var i = 0; i < findHeightCriteriaNow.length; i++){
+
+
+		alert(people[i].firstName + " " + people[i].lastName);
+	}	
+
+}
+
+function findWeightCriteria(people){
+	var tellWeight = Prompt("How tall are they?");	
+
+	var findWeightCriteriaNow = people.filter(function(person){
+		if(tellWeight === person.Weight){
+			return true;
+		}
+		else {
+			return false;
+		}
+
+
+
+	});
+
+	for(var i = 0; i < findHeightCriteriaNow.length; i++){
+
+
+		alert(people[i].firstName + " " + people[i].lastName);
+	}	
+
+}
+
+
+function findOccupationCriteria(people){
+	var tellOccupation = Prompt("How tall are they?");	
+
+	var findOccupationCriteriaNow = people.filter(function(person){
+		if(tellOccupation === person.occupation){
+			return true;
+		}
+		else {
+			return false;
+		}
+
+
+
+	});
+
+	for(var i = 0; i < findOccupationCriteriaNow.length; i++){
+
+
+		alert(people[i].firstName + " " + people[i].lastName);
+	}	
+
+}
+
+function findEyeColorCriteria(people){
+	var tellEyeColor = Prompt("How tall are they?");	
+
+	var findEyeColorCriteriaNow = people.filter(function(person){
+		if(tellEyeColor === person.eyeColor){
+			return true;
+		}
+		else {
+			return false;
+		}
+
+
+
+	});
+
+	for(var i = 0; i < findEyeColorCriteriaNow.length; i++){
+
+
+		alert(people[i].firstName + " " + people[i].lastName);
+	}	
 
 }
 
