@@ -20,6 +20,25 @@ function app(people){
   }
 }
 
+function wrongAnswer(people){
+  var tryCriteria = prompt("Sorry, invalid answer.\n" +
+
+      "1 = Search by criteria\n" +
+      "2 = Try Again");
+
+switch (tryCriteria){
+  case "1":
+  noName(people);
+  break;
+  case "2":
+  searchByName(people);
+  break;
+
+}
+}
+
+
+
 function searchByName(people){
   var firstName = promptFor("What is the person's first name?", chars);
   var lastName = promptFor("What is the person's last name?", chars);
@@ -32,7 +51,7 @@ function searchByName(people){
 		return mainMenu(people[i], people);
  	}
  	else{
-
+      return wrongAnswer();
  	}
  }
 }
@@ -48,11 +67,6 @@ function searchByAge(people){
 function mainMenu(person, people){
 
   /* Here we pass in the entire person object that we found in our search, as well as the entire original dataset of people. We need people in order to find descendants and other information that the user may want. */
-
-  if(!person){
-    alert("Could not find that individual.");
-    return app(people); // restart
-  }
 
   var displayOption = prompt("Found " + person.firstName + " " + person.lastName + " . Do you want to know their 'info', 'family', or 'descendants'? Type the option you want or 'restart' or 'quit'");
 
@@ -73,7 +87,7 @@ function mainMenu(person, people){
     case "quit":
     return; // stop execution
     default:
-    return mainMenu(person, people); // ask again
+    return wrongAnswer(); // ask again
   }
 }
 
@@ -131,39 +145,40 @@ function chars(input){
 
 function noName(people){
 
-  if(!person){
-    alert("Could not find that individual.");
-    return app(people); // restart
-  }
+//  if(!person){
+//    alert("Could not find that individual.");
+//    return app(people); // restart
+  
 
-  var displayOption = prompt("Search by characteristics");
+  var displayOption = prompt("Search by: \n" + "1 = Age \n" + "2 = Height\n" + "3 = Weight\n" 
+    + "4 = Occupation\n" + "5 = Eye Color\n" + "6 = Back to main menu");
 
   switch(displayOption){
-    case "Age":
+    case "1":
     findAgeCriteria(people);
     break;
-    case "Height":
+    case "2":
     findHeightCriteria(people);
     break;
-    case "Weight":
+    case "3":
     findWeightCriteria(people);
     break;
-    case "Occuupation":
+    case "4":
     findOccupationCriteria(people);
     break;
-    case "Eye Color":
+    case "5":
     findEyeColorCriteria(people);
     break;
-    case "Quit":
+    case "6":
     return; // stop execution
     default:
-    return mainMenu(person, people); // ask again
+    return (people); // ask again
   }
 }
 
 
 function findAgeCriteria(people){
-	var tellAge = Prompt("What age are they?");	
+	var tellAge = prompt("What age are they?");	
 
 	var findAgeCriteriaNow = people.filter(function(person){
 		if(tellAge === person.age){
@@ -186,7 +201,7 @@ function findAgeCriteria(people){
 }
 
 function findHeightCriteria(people){
-	var tellHeight = Prompt("How tall are they?");	
+	var tellHeight = prompt("How tall are they?");	
 
 	var findHeightCriteriaNow = people.filter(function(person){
 		if(tellHeight === person.height){
@@ -209,7 +224,7 @@ function findHeightCriteria(people){
 }
 
 function findWeightCriteria(people){
-	var tellWeight = Prompt("How tall are they?");	
+	var tellWeight = prompt("How much do they weight?");	
 
 	var findWeightCriteriaNow = people.filter(function(person){
 		if(tellWeight === person.Weight){
@@ -233,7 +248,7 @@ function findWeightCriteria(people){
 
 
 function findOccupationCriteria(people){
-	var tellOccupation = Prompt("How tall are they?");	
+	var tellOccupation = prompt("What is their occupation?");	
 
 	var findOccupationCriteriaNow = people.filter(function(person){
 		if(tellOccupation === person.occupation){
@@ -256,7 +271,7 @@ function findOccupationCriteria(people){
 }
 
 function findEyeColorCriteria(people){
-	var tellEyeColor = Prompt("How tall are they?");	
+	var tellEyeColor = prompt("How tall are they?");	
 
 	var findEyeColorCriteriaNow = people.filter(function(person){
 		if(tellEyeColor === person.eyeColor){
