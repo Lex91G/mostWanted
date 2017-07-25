@@ -57,7 +57,7 @@ function searchByName(people){
 }
 
 function searchByAge(people){
-  var ageNumber = promptFor("What is the person's age?", chars);
+  var ageNumber = prompt("What is the person's age?", chars);
 
   
 }
@@ -76,9 +76,11 @@ function mainMenu(person, people){
     break;
     case "family":
     getFamily(person, people);
-    // TODO: get person's family
     break;
     case "descendants":
+    getDescendants(person);
+    break;
+    case
     // TODO: get person's descendants
     break;
     case "restart":
@@ -96,7 +98,8 @@ function getInfo(person){
 	+ person.height + "Weight: " + person.weight + "Eye Color: " + person.eyeColor);
 		
 }
-function getFamily(person, people){
+
+function getDescendants(person, people){
 		var getParents = person.id;
 		for(var i = 0; i > people.length;i++){
 			for(var j = 0; j > people[i].parents.length; j++){
@@ -106,8 +109,6 @@ function getFamily(person, people){
 		}		
 	}
 }
-
-
 
 // alerts a list of people
 function displayPeople(people){

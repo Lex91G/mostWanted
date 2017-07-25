@@ -5,7 +5,7 @@ const data = [
 		"firstName": "Billy",
 		"lastName": "Bob",
 		"gender": "male",
-		"dob": "1/18/1949",
+		"dob": "1/18/1949", // Age is 68
 		"height": 71,
 		"weight": 175,
 		"eyeColor": "brown",
@@ -18,7 +18,7 @@ const data = [
 		"firstName": "Uma",
 		"lastName": "Bob",
 		"gender": "female",
-		"dob": "4/1/1947",
+		"dob": "4/1/1947", // Age is 66
 		"height": 65,
 		"weight": 162,
 		"eyeColor": "brown",
@@ -31,7 +31,7 @@ const data = [
 		"firstName": "Michael",
 		"lastName": "Walkens",
 		"gender": "male",
-		"dob": "5/9/1951",
+		"dob": "5/9/1951", // Age is 70
 		"height": 76,
 		"weight": 250,
 		"eyeColor": "brown",
@@ -44,7 +44,7 @@ const data = [
 		"firstName": "Jon",
 		"lastName": "Walkens",
 		"gender": "male",
-		"dob": "9/6/1945",
+		"dob": "9/6/1945", // Age is 64
 		"height": 62,
 		"weight": 115,
 		"eyeColor": "brown",
@@ -57,7 +57,7 @@ const data = [
 		"firstName": "Jack",
 		"lastName": "Pafoy",
 		"gender": "male",
-		"dob": "3/16/1938",
+		"dob": "3/16/1938", // Age is 79
 		"height": 70,
 		"weight": 207,
 		"eyeColor": "black",
@@ -70,7 +70,7 @@ const data = [
 		"firstName": "Jen",
 		"lastName": "Pafoy",
 		"gender": "female",
-		"dob": "4/10/1940",
+		"dob": "4/10/1940", // Age is 81
 		"height": 72,
 		"weight": 256,
 		"eyeColor": "black",
@@ -83,7 +83,7 @@ const data = [
 		"firstName": "Mister",
 		"lastName": "Potatoo",
 		"gender": "male",
-		"dob": "12/18/1952",
+		"dob": "12/18/1952", // Age is 65
 		"height": 66,
 		"weight": 170,
 		"eyeColor": "hazel",
@@ -96,7 +96,7 @@ const data = [
 		"firstName": "Missuz",
 		"lastName": "Potatoo",
 		"gender": "female",
-		"dob": "10/28/1948",
+		"dob": "10/28/1948", // Age is 69
 		"height": 59,
 		"weight": 137,
 		"eyeColor": "blue",
@@ -109,7 +109,7 @@ const data = [
 		"firstName": "Joy",
 		"lastName": "Madden",
 		"gender": "female",
-		"dob": "4/20/1939",
+		"dob": "4/20/1939", // Age is 78
 		"height": 69,
 		"weight": 199,
 		"eyeColor": "hazel",
@@ -122,7 +122,7 @@ const data = [
 		"firstName": "Mader",
 		"lastName": "Madden",
 		"gender": "male",
-		"dob": "5/6/1937",
+		"dob": "5/6/1937", // Age is 80
 		"height": 76,
 		"weight": 205,
 		"eyeColor": "black",
@@ -135,7 +135,7 @@ const data = [
 		"firstName": "Jill",
 		"lastName": "Pafoy",
 		"gender": "female",
-		"dob": "2/8/1972",
+		"dob": "2/8/1972", // Age is 45
 		"height": 74,
 		"weight": 118,
 		"eyeColor": "brown",
@@ -148,7 +148,7 @@ const data = [
 		"firstName": "Ralph",
 		"lastName": "Bob",
 		"gender": "male",
-		"dob": "12/23/1969",
+		"dob": "12/23/1969", // Age is 48
 		"height": 66,
 		"weight": 179,
 		"eyeColor": "blue",
@@ -161,7 +161,7 @@ const data = [
 		"firstName": "Jasmine",
 		"lastName": "Bob",
 		"gender": "female",
-		"dob": "12/18/1969",
+		"dob": "12/18/1969", // Age is 48 
 		"height": 58,
 		"weight": 156,
 		"eyeColor": "blue",
@@ -174,7 +174,7 @@ const data = [
 		"firstName": "Annie",
 		"lastName": "Pafoy",
 		"gender": "female",
-		"dob": "11/4/1970",
+		"dob": "11/4/1970", // Age is 47
 		"height": 62,
 		"weight": 235,
 		"eyeColor": "hazel",
@@ -187,7 +187,7 @@ const data = [
 		"firstName": "Dave",
 		"lastName": "Pafoy",
 		"gender": "male",
-		"dob": "8/5/1967",
+		"dob": "8/5/1967", // Age is 50
 		"height": 61,
 		"weight": 112,
 		"eyeColor": "green",
@@ -200,7 +200,7 @@ const data = [
 		"firstName": "Amii",
 		"lastName": "Pafoy",
 		"gender": "female",
-		"dob": "3/13/1963",
+		"dob": "3/13/1963", // Age is 54
 		"height": 74,
 		"weight": 184,
 		"eyeColor": "brown",
@@ -213,7 +213,7 @@ const data = [
 		"firstName": "Regina",
 		"lastName": "Madden",
 		"gender": "female",
-		"dob": "7/26/1959",
+		"dob": "7/26/1959", // Age is 58
 		"height": 71,
 		"weight": 249,
 		"eyeColor": "brown",
@@ -226,7 +226,7 @@ const data = [
 		"firstName": "Hana",
 		"lastName": "Madden",
 		"gender": "female",
-		"dob": "10/7/1953",
+		"dob": "10/7/1953", // Age is 
 		"height": 70,
 		"weight": 187,
 		"eyeColor": "brown",
