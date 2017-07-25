@@ -36,6 +36,12 @@ function searchByName(people){
  	}
  }
 }
+
+function searchByAge(people){
+  var ageNumber = promptFor("What is the person's age?", chars);
+
+  
+}
  
 
  // Menu function to call once you find who you are looking for
