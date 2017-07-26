@@ -178,7 +178,7 @@ function noName(people){
 }
 
 
-function findAgeCriteria(people){
+function findAgeCriteria(people, age){
 	var tellAge = prompt("What age are they?");	
 
 	var findAgeCriteriaNow = people.filter(function(person){
@@ -192,16 +192,20 @@ function findAgeCriteria(people){
 
 
 	});
+      if(findAgeCriteriaNow = [0]){
+    getOut();
+}
 
 	for(var i = 0; i < findAgeCriteriaNow.length; i++){
 
 
+
 		alert(people[i].firstName + " " + people[i].lastName);
 	}	
-return app();
+return app(people, age);
 }
 
-function findHeightCriteria(people){
+function findHeightCriteria(people,height){
 	var tellHeight = prompt("How tall are they (inches)?");	
 
 	var findHeightCriteriaNow = people.filter(function(person){
@@ -211,17 +215,22 @@ function findHeightCriteria(people){
 		else {
 			return false;
 		}
-});
+  
+  });    
+
 
 	for(var i = 0; i < findHeightCriteriaNow.length; i++){
 
 
 		alert(findHeightCriteriaNow[i].firstName + " " + findHeightCriteriaNow[i].lastName);
 	}	
-return app();
+      if(findHeightCriteriaNow.length === 0){
+    getOut(people);
+}
+return app(people);
 }
 
-function findWeightCriteria(people){
+function findWeightCriteria(people, weight){
 	var tellWeight = prompt("How much do they weight?");	
 
 	var findWeightCriteriaNow = people.filter(function(person){
@@ -235,17 +244,20 @@ function findWeightCriteria(people){
 
 
 	});
+      if(findWeightCriteriaNow = [0]){
+    getOut();
+}
 
 	for(var i = 0; i < findWeightCriteriaNow.length; i++){
 
 
 		alert(findWeightCriteriaNow[i].firstName + " " + findWeightCriteriaNow[i].lastName);
 	}	
-return app();
+return app(people);
 }
 
 
-function findOccupationCriteria(people){
+function findOccupationCriteria(people, occupation){
 	var tellOccupation = prompt("What is their occupation?");	
 
 	var findOccupationCriteriaNow = people.filter(function(person){
@@ -259,16 +271,21 @@ function findOccupationCriteria(people){
 
 
 	});
+      if(findOccupationColorCriteriaNow = [0]){
+    getOut();
+}
 
 	for(var i = 0; i < findOccupationCriteriaNow.length; i++){
 
 
 		alert(findOccupationCriteriaNow[i].firstName + " " + findOccupationCriteriaNow[i].lastName);
 	}	
-return app();
+  return app(people)
+
+
 }
 
-function findEyeColorCriteria(people){
+function findEyeColorCriteria(people, eyeColor){
 	var tellEyeColor = prompt("What color are their eyes?");	
 
 	var findEyeColorCriteriaNow = people.filter(function(person){
@@ -282,47 +299,68 @@ function findEyeColorCriteria(people){
 
 
 	});
-    if(findEyeColorCriteriaNow = 0){
-    alert("No Matches Founds \n Please Try Again")
-    findEyeColorCriteria();
-  }
+    if(findEyeColorCriteriaNow = [0]){
+    getOut();
+}
 
 	for(var i = 0; i < findEyeColorCriteriaNow.length; i++){
 
 
 		alert(findEyeColorCriteriaNow[i].firstName + " " + findEyeColorCriteriaNow[i].lastName);
 	}	
-  return app();
+  return app(people);
 }
 
+function getOut(people){
+   var goBackHome = prompt("Sorry, invalid answer\n" + "1 = Main Menu\n" + "2 = Try another search");
+
+switch (goBackHome){
+  case "1":
+      app(people);
+      break;
+  case "2":
+      noName(people);
+      break;
+  default:
+      getOut(people);
+      break;
+
+    }
+}
 //abs
 //function doMathGettingAge();
 //var todaysDate -= pe
-//function getAFamily(person, people){
-//for(var i = 0; i < people.length; i++){
 
-  //var gettingFamilyFilter = data.filter(function(element){
-      //if(person.id === people[i].currentSpouse){
 
-      //return true;
-   // }
+function getAFamily(person, people){
+  familyParents(person,people);
+// for(var i = 0; i < people.length; i++){
 
-      //else if(person.id === people[i].parents[0] || person.id === people[i].parents[1]){
-      //return true;
+//   var gettingFamilyFilter = data.filter(function(element){
+//       if(person.id === people[i].currentSpouse){
 
-   // }
-     // else if(person.parents[0] === people[i].parents[0] || person.parents[1] === people[i].parents[2]
-       //|| person.parents[2] === people[i].parents[1] || person.parents[2] === people[i].parents[2]){
-      //return true;
-    //}
-     // else if(person.parents === people.parents){
-      //return true;
-       //   }
-       // }
-     // }
-   // }
-      
-    
+//       return true;
+//     }
+
+//       else if(person.id === people[i].parents[0] || person.id === people[i].parents[1]){
+//       return true;
+
+//     }
+//       else if(person.parents[0] === people[i].parents[0] || person.parents[1] === people[i].parents[2]
+//        || person.parents[2] === people[i].parents[1] || person.parents[2] === people[i].parents[2]){
+//       return true;
+//     }
+//       else if(person.parents === people.parents){
+//       return true;
+//           }
+//         }
+//       }
+//   }
+      function familyParents(person, people){
+      for (var i = 0 ; i <person.parents.length; i++){
+        var familyParentsGet = prompt("Parents of " person "\nparents[0] +\nparents[1]") 
+      }
+    }
   
 
 
