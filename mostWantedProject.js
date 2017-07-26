@@ -9,7 +9,7 @@ function app(people){
   var searchType = promptFor("Do you know the name of the person you are looking for? Enter 'yes' or 'no'", yesNo).toLowerCase();
   switch(searchType){
     case 'yes':
-    	var person = searchByName(people);
+    	searchByName(people);
     break;
     case 'no':
     	noName(people);
