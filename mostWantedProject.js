@@ -39,7 +39,7 @@ switch (tryCriteria){
 
 
 
-function searchByName(people){
+function searchByName(people, person){
   var firstName = promptFor("What is the person's first name?", chars);
   var lastName = promptFor("What is the person's last name?", chars);
   var fullName = firstName + " " + lastName;
@@ -51,9 +51,10 @@ function searchByName(people){
 		return mainMenu(people[i], people);
  	}
  	else{
-      return wrongAnswer();
+      
  	}
- }
+}
+ return wrongAnswer();
 }
 
 function searchByAge(people){
@@ -244,15 +245,16 @@ function findWeightCriteria(people, weight){
 
 
 	});
-      if(findWeightCriteriaNow = [0]){
-    getOut();
-}
+      
 
 	for(var i = 0; i < findWeightCriteriaNow.length; i++){
 
 
 		alert(findWeightCriteriaNow[i].firstName + " " + findWeightCriteriaNow[i].lastName);
 	}	
+     if(findWeightCriteriaNow.length === 0){
+    getOut(people);
+}
 return app(people);
 }
 
@@ -271,15 +273,16 @@ function findOccupationCriteria(people, occupation){
 
 
 	});
-      if(findOccupationColorCriteriaNow = [0]){
-    getOut();
-}
+      
 
 	for(var i = 0; i < findOccupationCriteriaNow.length; i++){
 
 
 		alert(findOccupationCriteriaNow[i].firstName + " " + findOccupationCriteriaNow[i].lastName);
 	}	
+    if(findOccupationCriteriaNow.length === 0){
+    getOut(people);
+}
   return app(people)
 
 
@@ -299,15 +302,15 @@ function findEyeColorCriteria(people, eyeColor){
 
 
 	});
-    if(findEyeColorCriteriaNow = [0]){
-    getOut();
-}
 
 	for(var i = 0; i < findEyeColorCriteriaNow.length; i++){
 
 
 		alert(findEyeColorCriteriaNow[i].firstName + " " + findEyeColorCriteriaNow[i].lastName);
 	}	
+  if(findEyeColorCriteriaNow.length === 0){
+    getOut(people);
+  }
   return app(people);
 }
 
@@ -334,6 +337,7 @@ switch (goBackHome){
 
 function getAFamily(person, people){
   familyParents(person,people);
+}
 // for(var i = 0; i < people.length; i++){
 
 //   var gettingFamilyFilter = data.filter(function(element){
@@ -356,12 +360,15 @@ function getAFamily(person, people){
 //         }
 //       }
 //   }
-      function familyParents(person, people){
-      for (var i = 0 ; i <person.parents.length; i++){
-        var familyParentsGet = prompt("Parents of " person "\nparents[0] +\nparents[1]") 
-      }
-    }
-  
+  //     function familyParents(person, people){
+  //     for (var i =0 ; i < person.parents.length; i++){
+  //       var convertToLast = person.parents[i] 
+  //       var parentsFamily = people.filter(function)(parents)
+  //       if(parents)
+
+  //       alert(person.parents[i]  + person.parents[i]);
+  //     }
+  // }
 
 
 
