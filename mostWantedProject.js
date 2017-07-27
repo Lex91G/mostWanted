@@ -12,7 +12,7 @@ function app(people){
     	searchByName(people);
     break;
     case 'no':
-    	noName(people);
+    	noName(people, []);
     break;
     default:
     app(people); // restart app
@@ -81,7 +81,13 @@ function mainMenu(person, people){
     getAFamily(person, people);
     break;
     case "3":
-    getDescendants(person, people);
+    getDecendents();
+    var foundPerson = person[0];
+    var descendants = getDecendents(people, foundPerson);
+    var results = "Here are the kids: \n";
+    for(var i = 0; i < descendants.length; i++){
+      result += descendants[i].firstName + " " + descendants[i].lastName + "\n";
+    }
     break;
     case "4":
     app(people); // restart
@@ -99,16 +105,16 @@ function getInfo(person, people){
 		return mainMenu(person, people);
 }
 
-function getDescendants(person, people){
-		var getParents = person.id;
-		for(var i = 0; i > people.length;i++){
-			for(var j = 0; j > people[i].parents.length; j++){
-				if(people[i].parents[j]=== getParents){
-					alert("The parents are " + people[i].parents[j]);
-			}
-		}		
-	}
-}
+// function getDescendants(person, people){
+// 		var getParents = person.id;
+// 		for(var i = 0; i > people.length;i++){
+// 			for(var j = 0; j > people[i].parents.length; j++){
+// 				if(people[i].parents[j]=== getParents){
+// 					alert("The parents are " + people[i].parents[j]);
+// 			}
+// 		}		
+// 	}
+// }
 
 // alerts a list of people
 function displayPeople(people){
@@ -144,7 +150,7 @@ function chars(input){
   return true; // default validation only
 }
 
-function noName(people){
+function noName(people, results){
 
 //  if(!person){
 //    alert("Could not find that individual.");
@@ -179,34 +185,30 @@ function noName(people){
 }
 
 
-function findAgeCriteria(people, age){
-	var tellAge = prompt("What age are they?");	
+function findAgeCriteria(people, results){
+		
+  var age = prompt("What old are they?");
 
-	var findAgeCriteriaNow = people.filter(function(person){
-		if(tellAge === person.age){
-			return true;
-		}
+
+  var findAgeCriteriaNow = people.filter(function(person){
+		var ageResult = person.dob.split("/");
+    if(doMathGettingAge(new Date(ageResult[2], ageResult[0], ageResult [1])) == age){
+			alert(" " + person.firstName + " " + person.lastName)
+      return true;
+	}
+
 		else {
 			return false;
-		}
 
+	   
+	}
 
-
-	});
-      if(findAgeCriteriaNow = [0]){
-    getOut();
+});
+alert("So far found: " + person);
+return muiltipleSearch(people, findAgeCriteriaNow);
 }
 
-	for(var i = 0; i < findAgeCriteriaNow.length; i++){
-
-
-
-		alert(people[i].firstName + " " + people[i].lastName);
-	}	
-return app(people, age);
-}
-
-function findHeightCriteria(people,height){
+function findHeightCriteria(people){
 	var tellHeight = prompt("How tall are they (inches)?");	
 
 	var findHeightCriteriaNow = people.filter(function(person){
@@ -219,19 +221,21 @@ function findHeightCriteria(people,height){
   
   });    
 
-
+  var resultString = "";
 	for(var i = 0; i < findHeightCriteriaNow.length; i++){
 
 
-		alert(findHeightCriteriaNow[i].firstName + " " + findHeightCriteriaNow[i].lastName);
+		resultString += findHeightCriteriaNow[i].firstName + " " + findHeightCriteriaNow[i].lastName;
+    
 	}	
       if(findHeightCriteriaNow.length === 0){
     getOut(people);
 }
-return app(people);
+alert("So far found: " + resultString + "\n");
+return muiltipleSearch(people,findHeightCriteriaNow);
 }
 
-function findWeightCriteria(people, weight){
+function findWeightCriteria(people){
 	var tellWeight = prompt("How much do they weight?");	
 
 	var findWeightCriteriaNow = people.filter(function(person){
@@ -246,20 +250,21 @@ function findWeightCriteria(people, weight){
 
 	});
       
-
+  var resultString = "";
 	for(var i = 0; i < findWeightCriteriaNow.length; i++){
 
 
-		alert(findWeightCriteriaNow[i].firstName + " " + findWeightCriteriaNow[i].lastName);
+		resultString +=findWeightCriteriaNow[i].firstName + " " + findWeightCriteriaNow[i].lastName;
 	}	
      if(findWeightCriteriaNow.length === 0){
     getOut(people);
 }
-return app(people);
+alert("So far found: " + resultString + "\n");
+return muiltipleSearch(people, findWeightCriteria);
 }
 
 
-function findOccupationCriteria(people, occupation){
+function findOccupationCriteria(people){
 	var tellOccupation = prompt("What is their occupation?");	
 
 	var findOccupationCriteriaNow = people.filter(function(person){
@@ -274,21 +279,25 @@ function findOccupationCriteria(people, occupation){
 
 	});
       
-
+  var resultString = "";
 	for(var i = 0; i < findOccupationCriteriaNow.length; i++){
 
 
-		alert(findOccupationCriteriaNow[i].firstName + " " + findOccupationCriteriaNow[i].lastName);
+		resultString += findOccupationCriteriaNow[i].firstName + " " + findOccupationCriteriaNow[i].lastName;
 	}	
+
+  
+
     if(findOccupationCriteriaNow.length === 0){
     getOut(people);
 }
-  return app(people)
+alert("So far found: " + resultString + "\n");
+  return muiltipleSearch(people, findOccupationCriteriaNow);
 
 
 }
 
-function findEyeColorCriteria(people, eyeColor){
+function findEyeColorCriteria(people, results){
 	var tellEyeColor = prompt("What color are their eyes?");	
 
 	var findEyeColorCriteriaNow = people.filter(function(person){
@@ -302,16 +311,17 @@ function findEyeColorCriteria(people, eyeColor){
 
 
 	});
-
+var resultString = "";
 	for(var i = 0; i < findEyeColorCriteriaNow.length; i++){
 
 
-		alert(findEyeColorCriteriaNow[i].firstName + " " + findEyeColorCriteriaNow[i].lastName);
+		resultString +=findEyeColorCriteriaNow[i].firstName + " " + findEyeColorCriteriaNow[i].lastName;
 	}	
   if(findEyeColorCriteriaNow.length === 0){
     getOut(people);
   }
-  return app(people);
+  alert("So far found: " + resultString + "\n");
+  return muiltipleSearch(people, findEyeColorCriteriaNow);
 }
 
 function getOut(people){
@@ -331,13 +341,83 @@ switch (goBackHome){
     }
 }
 //abs
-//function doMathGettingAge();
-//var todaysDate -= pe
+function doMathGettingAge(age){
+var delta = Date.now() - age.getTime();
+var big = new Date(delta);
 
+return Math.abs(big.getUTCFullYear() - 1970);
 
-function getAFamily(person, people){
-  familyParents(person,people);
 }
+function muiltipleSearch(people, results){
+var pickARoute = prompt("Use mutiple criteria \n 1 = Yes \n 2= No \n 3 = Exit");
+switch (pickARoute){
+  case "1":
+    noName(results);
+    break;
+  case "2":
+    noName(data, []);
+    break;
+  case "3":
+    mainMenu(data);
+    break;
+
+    default:
+    muiltipleSearch(people, results);
+    break;
+
+}
+}
+function getChildrenFamily(people, person){
+var arrayChildren = [];
+for(var i = 0;i < people.length; i++){
+  for(var j = 0; j < people[i].parents.length; j++){
+        if(person.id ===people[i].parents[j]){
+    arrayChildren.push(people[i].firstName + people[i].lastName);
+
+  }
+      }
+alert(arrayChildren + " \n");
+
+    }
+    
+function getDecendents(people,person){
+  var personId= person.id;
+  var children = people.filter(function(element){
+    if(element.parents[0] === person.id || element.parents[1] === person.id){
+    
+        return true;
+
+    }
+    else{
+      return false;
+    }
+  });
+    
+    if(children.length > 0){
+      for(var child in children)
+    children = children.concat(getDecendents(person,children[child]));
+       
+    }
+  
+  
+}
+    return children;
+  
+
+}
+   
+    
+    
+  
+  
+
+
+
+
+
+// function getAFamily(person, people){
+//   familyParents(person,people);
+//}
 // for(var i = 0; i < people.length; i++){
 
 //   var gettingFamilyFilter = data.filter(function(element){
