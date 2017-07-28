@@ -10,13 +10,13 @@ function app(people){
   switch(searchType){
     case 'yes':
     	searchByName(people);
-    break;
+        break;
     case 'no':
     	noName(people, []);
-    break;
+        break;
     default:
-    app(people); // restart app
-    break;
+      app(people); // restart app
+        break;
   }
 }
 
@@ -26,18 +26,16 @@ function wrongAnswer(people){
       "1 = Search by criteria\n" +
       "2 = Try Again");
 
-switch (tryCriteria){
-  case "1":
-  noName(people);
-  break;
-  case "2":
-  searchByName(people);
-  break;
+  switch (tryCriteria){
+   case "1":
+      noName(people);
+       break;
+   case "2":
+      searchByName(people);
+       break;
 
+    }
 }
-}
-
-
 
 function searchByName(people, person){
   var firstName = promptFor("What is the person's first name?", chars);
@@ -51,88 +49,47 @@ function searchByName(people, person){
 		return mainMenu(people[i], people);
  	}
  	else{
-      
- 	}
+  }
 }
  return wrongAnswer();
 }
 
-function searchByAge(people){
-  var ageNumber = prompt("What is the person's age?", chars);
-
-  
-}
- 
-
- // Menu function to call once you find who you are looking for
 function mainMenu(person, people){
 
-  /* Here we pass in the entire person object that we found in our search, as well as the entire original dataset of people. We need people in order to find descendants and other information that the user may want. */
-
-  var displayOption = prompt("Information on " + person.firstName + " " + person.lastName  + 
-
-    "\n 1 = Information \n 2 = Family \n 3 = Descendants \n 4 = Restart");
+   var displayOption = prompt("Information on " + person.firstName + " " + person.lastName  + 
+     "\n 1 = Information \n 2 = Family \n 3 = Descendants \n 4 = Restart");
 
   switch(displayOption){
     case "1":
-    getInfo(person);
-    break;
+     getInfo(person, people);
+        break;
     case "2":
-    getAFamily(person, people);
-    break;
+     getFamily(person, people);
+        break;
     case "3":
-    getDecendents();
-    var foundPerson = person[0];
-    var descendants = getDecendents(people, foundPerson);
-    var results = "Here are the kids: \n";
-    for(var i = 0; i < descendants.length; i++){
-      result += descendants[i].firstName + " " + descendants[i].lastName + "\n";
-    }
-    break;
+     var descendents = getDescendents(person, people);
+     var results = "Descendants are: \n";
+        for(var i = 0; i < descendents.length; i++){
+          results += descendents[i].firstName + " " + descendents[i].lastName + "\n";
+            }alert(results + "\n");
+            mainMenu(person, people);
+                break;
     case "4":
-    app(people); // restart
-    break;
+        app(people); // restart
+         break;
     case "quit":
-    return; // stop execution
+         return; // stop execution
     default:
-    return wrongAnswer(); // ask again
+         return wrongAnswer(); // ask again
   }
 }
 
 function getInfo(person, people){
 		alert("Gender: " + person.gender + "\nDate Of Birth: " + person.dob + "\nHeight: "
 	+ person.height + "\nWeight: " + person.weight + "\nEye Color: " + person.eyeColor);
-		return mainMenu(person, people);
+		  return mainMenu(person, people);
 }
 
-// function getDescendants(person, people){
-// 		var getParents = person.id;
-// 		for(var i = 0; i > people.length;i++){
-// 			for(var j = 0; j > people[i].parents.length; j++){
-// 				if(people[i].parents[j]=== getParents){
-// 					alert("The parents are " + people[i].parents[j]);
-// 			}
-// 		}		
-// 	}
-// }
-
-// alerts a list of people
-function displayPeople(people){
-  alert(people.map(function(person){
-    return person.firstName + " " + person.lastName;
-  }).join("\n"));
-}
-
-function displayPerson(person){
-  // print all of the information about a person:
-  // height, weight, age, name, occupation, eye color.
-  var personInfo = "First Name: " + person.firstName + "\n";
-  personInfo += "Last Name: " + person.lastName + "\n";
-  // TODO: finish getting the rest of the information to display
-  alert(personInfo);
-}
-
-// function that prompts and validates user input
 function promptFor(question, valid){
   do{
     var response = prompt(question).trim();
@@ -152,36 +109,31 @@ function chars(input){
 
 function noName(people, results){
 
-//  if(!person){
-//    alert("Could not find that individual.");
-//    return app(people); // restart
-  
-
   var displayOption = prompt("Search by: \n" + "1 = Age \n" + "2 = Height\n" + "3 = Weight\n" 
     + "4 = Occupation\n" + "5 = Eye Color\n" + "6 = Back to main menu");
 
   switch(displayOption){
     case "1":
-    findAgeCriteria(people);
-    break;
+        findAgeCriteria(people);
+        break;
     case "2":
-    findHeightCriteria(people);
-    break;
+        findHeightCriteria(people);
+        break;
     case "3":
-    findWeightCriteria(people);
-    break;
+        findWeightCriteria(people);
+        break;
     case "4":
-    findOccupationCriteria(people);
-    break;
+        findOccupationCriteria(people);
+        break;
     case "5":
-    findEyeColorCriteria(people);
-    break;
+        findEyeColorCriteria(people);
+        break;
     case "6":
-    app(people);
-    return; 
+        app(people);
+        return; 
     default:
-    return (people); // ask again
-  }
+        return (people); // ask again
+  }   
 }
 
 
@@ -193,18 +145,20 @@ function findAgeCriteria(people, results){
   var findAgeCriteriaNow = people.filter(function(person){
 		var ageResult = person.dob.split("/");
     if(doMathGettingAge(new Date(ageResult[2], ageResult[0], ageResult [1])) == age){
-			alert(" " + person.firstName + " " + person.lastName)
+			var mathProblemAnswer= person.firstName + " " + person.lastName;
+      alert(mathProblemAnswer);
       return true;
 	}
 
-		else {
+		else { 
 			return false;
-
-	   
-	}
+    }
+   
 
 });
-alert("So far found: " + person);
+ if(findAgeCriteriaNow.length === 0){
+  getOut(people);
+}
 return muiltipleSearch(people, findAgeCriteriaNow);
 }
 
@@ -225,13 +179,13 @@ function findHeightCriteria(people){
 	for(var i = 0; i < findHeightCriteriaNow.length; i++){
 
 
-		resultString += findHeightCriteriaNow[i].firstName + " " + findHeightCriteriaNow[i].lastName;
+		resultString += findHeightCriteriaNow[i].firstName + " " + findHeightCriteriaNow[i].lastName + "\n";
     
 	}	
       if(findHeightCriteriaNow.length === 0){
     getOut(people);
 }
-alert("So far found: " + resultString + "\n");
+alert("So far found: " + " \n" + resultString + "\n");
 return muiltipleSearch(people,findHeightCriteriaNow);
 }
 
@@ -254,7 +208,7 @@ function findWeightCriteria(people){
 	for(var i = 0; i < findWeightCriteriaNow.length; i++){
 
 
-		resultString +=findWeightCriteriaNow[i].firstName + " " + findWeightCriteriaNow[i].lastName;
+		resultString +=findWeightCriteriaNow[i].firstName + " " + findWeightCriteriaNow[i].lastName + "\n";
 	}	
      if(findWeightCriteriaNow.length === 0){
     getOut(people);
@@ -283,7 +237,7 @@ function findOccupationCriteria(people){
 	for(var i = 0; i < findOccupationCriteriaNow.length; i++){
 
 
-		resultString += findOccupationCriteriaNow[i].firstName + " " + findOccupationCriteriaNow[i].lastName;
+		resultString += findOccupationCriteriaNow[i].firstName + " " + findOccupationCriteriaNow[i].lastName + "\n";
 	}	
 
   
@@ -315,7 +269,7 @@ var resultString = "";
 	for(var i = 0; i < findEyeColorCriteriaNow.length; i++){
 
 
-		resultString +=findEyeColorCriteriaNow[i].firstName + " " + findEyeColorCriteriaNow[i].lastName;
+		resultString +=findEyeColorCriteriaNow[i].firstName + " " + findEyeColorCriteriaNow[i].lastName + "\n";
 	}	
   if(findEyeColorCriteriaNow.length === 0){
     getOut(people);
@@ -358,7 +312,7 @@ switch (pickARoute){
     noName(data, []);
     break;
   case "3":
-    mainMenu(data);
+    app(data);
     break;
 
     default:
@@ -367,22 +321,117 @@ switch (pickARoute){
 
 }
 }
-function getChildrenFamily(people, person){
+
+function getFamily(person, people){
+getChildrenFamily(person, people);
+getSpouse(person, people);
+getParents(person, people);
+getSiblings(person, people);
+return mainMenu(person, people);
+}
+function getChildrenFamily(person, people){
 var arrayChildren = [];
-for(var i = 0;i < people.length; i++){
+for(var i = 0; i < people.length; i++){
   for(var j = 0; j < people[i].parents.length; j++){
-        if(person.id ===people[i].parents[j]){
-    arrayChildren.push(people[i].firstName + people[i].lastName);
-
-  }
-      }
-alert(arrayChildren + " \n");
-
+    if(person.id === people[i].parents[j]){
+      arrayChildren.push(people[i].firstName + " " + people[i].lastName + "\n");
     }
+  }
+}if(arrayChildren.length > 0){
+
+alert("Children: " + "\n" + arrayChildren + "\n")
+return arrayChildren;
+}
+else{
+  alert("No Children Found")
+}
+
+
+    ;
+  }
+
+function getSpouse(person, people){
+  var personID = person.id
+  var spouse;
+  spouse= people.filter(function(element){
+if(element.currentSpouse === personID)
+  return true
     
-function getDecendents(people,person){
-  var personId= person.id;
-  var children = people.filter(function(element){
+else{
+  return false;
+  }
+});
+
+
+
+reportSpouse(spouse);
+
+}
+
+  
+
+function reportSpouse(spouse){
+  if (spouse.length>0) {
+  var spouseName= spouse.map(function(element){
+    var partnerName = element.firstName + " " + element.lastName
+    alert("Spouse: " + "\n"  + partnerName + "\n");
+  });
+}
+else{
+  alert("No Spouse")
+}
+}
+
+function getParents(person, people){
+var parentsResult = people.filter(function(element){
+  if(element.id === person.parents[0] || element.id === person. parents[1]){
+    return true
+}
+else{
+  return false
+}
+});
+if(parentsResult.length > 0){
+    var parentNames = parentsResult.map(function(element){
+    return element.firstName + " " + element.lastName + "\n";
+  });
+
+alert("Parents: " + "\n" + parentNames + "\n")
+return parentsResult;
+}
+else{
+  alert("No Parents Found")
+}
+}
+function getSiblings(person, people){
+var getSiblingsResults = people.filter(function(element){
+  if(element.id=== person.id){
+    return false;
+  }
+  for(var i = 0; i < person.parents.length; i++){
+    if(element.parents.includes(person.parents[i])){
+      return true;
+      }
+    }
+  });
+if(getSiblingsResults.length > 0){
+  var siblingsNames = getSiblingsResults.map(function(element){
+    return element.firstName + " " + element.lastName + "\n";
+  });
+alert("Siblings: " + "\n" + siblingsNames  + "\n");
+return getSiblingsResults;
+}
+else{
+  alert("No Siblings Found")
+}
+}
+
+
+
+function getDescendents(person, people){
+  var personID = person.id;
+  var children;
+   children = people.filter(function(element){
     if(element.parents[0] === person.id || element.parents[1] === person.id){
     
         return true;
@@ -395,63 +444,11 @@ function getDecendents(people,person){
     
     if(children.length > 0){
       for(var child in children)
-    children = children.concat(getDecendents(person,children[child]));
-       
+    children = children.concat(getDescendents(children[child], people));
+      
     }
-  
-  
-}
-    return children;
-  
-
-}
+  return children; 
+   }
    
-    
-    
+
   
-  
-
-
-
-
-
-// function getAFamily(person, people){
-//   familyParents(person,people);
-//}
-// for(var i = 0; i < people.length; i++){
-
-//   var gettingFamilyFilter = data.filter(function(element){
-//       if(person.id === people[i].currentSpouse){
-
-//       return true;
-//     }
-
-//       else if(person.id === people[i].parents[0] || person.id === people[i].parents[1]){
-//       return true;
-
-//     }
-//       else if(person.parents[0] === people[i].parents[0] || person.parents[1] === people[i].parents[2]
-//        || person.parents[2] === people[i].parents[1] || person.parents[2] === people[i].parents[2]){
-//       return true;
-//     }
-//       else if(person.parents === people.parents){
-//       return true;
-//           }
-//         }
-//       }
-//   }
-  //     function familyParents(person, people){
-  //     for (var i =0 ; i < person.parents.length; i++){
-  //       var convertToLast = person.parents[i] 
-  //       var parentsFamily = people.filter(function)(parents)
-  //       if(parents)
-
-  //       alert(person.parents[i]  + person.parents[i]);
-  //     }
-  // }
-
-
-
- 
-//mapResult = data.map(function(element)
-	
